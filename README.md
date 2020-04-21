@@ -2,6 +2,10 @@
   GitHub Explorer
 </h1>
 
+<h1 align="center">
+  <img alt="GitHub Explorer Demo" src="./docs/githubExplorer.png">
+</h1>
+
 <p align="center">
   <img alt="GitHub language count" src="https://img.shields.io/github/languages/count/leon-carvalho/github-explorer?color=%2304D361">
 
@@ -37,5 +41,5 @@ Application to explore GitHub repository issues built with React.js and TypeScri
 
 ## :memo: Todo
 
-- Tests [ ] 
+- Tests [ ]
 - Animations [ ]
