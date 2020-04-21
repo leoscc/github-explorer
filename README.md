@@ -1,10 +1,8 @@
 <h1 align="center">
-  GitHub Explorer
-</h1>
-
-<h1 align="center">
+  <img alt="GitHub Explorer Demo" src="./docs/logo.svg">
   <img alt="GitHub Explorer Demo" src="./docs/githubExplorer.png">
 </h1>
+
 
 <p align="center">
   <img alt="GitHub language count" src="https://img.shields.io/github/languages/count/leon-carvalho/github-explorer?color=%2304D361">
