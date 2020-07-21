@@ -1,4 +1,4 @@
-import React, { useState, useEffect, FormEvent } from 'react';
+import React, { useState, useEffect, FormEvent, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import { FiChevronRight } from 'react-icons/fi';
 
@@ -38,28 +38,36 @@ const Dashboard: React.FC = () => {
     );
   }, [repositories]);
 
-  async function handleAddRepository(
-    event: FormEvent<HTMLFormElement>,
-  ): Promise<void> {
-    event.preventDefault();
+  const handleAddRepository = useCallback(
+    async (event: FormEvent<HTMLFormElement>) => {
+      event.preventDefault();
 
-    if (!newRepo) {
-      setInputError('Digite o autor/nome do repositório');
-      return;
-    }
+      if (!newRepo) {
+        setInputError('Digite o autor/nome do repositório');
+        return;
+      }
 
-    try {
-      const { data: repository } = await api.get<Repository>(
-        `repos/${newRepo}`,
-      );
+      // check if repository already exists
+      if (repositories.find((repository) => repository.full_name === newRepo)) {
+        setNewRepo('');
+        setInputError('Ops, você já adicionou este repositório');
+        return;
+      }
 
-      setRepositories([...repositories, repository]);
-      setNewRepo('');
-      setInputError('');
-    } catch (error) {
-      setInputError('Erro na busca por este repositório');
-    }
-  }
+      try {
+        const { data: repository } = await api.get<Repository>(
+          `repos/${newRepo}`,
+        );
+
+        setRepositories([...repositories, repository]);
+        setNewRepo('');
+        setInputError('');
+      } catch (error) {
+        setInputError('Erro na busca por este repositório');
+      }
+    },
+    [newRepo, repositories],
+  );
 
   return (
     <>
@@ -69,6 +77,8 @@ const Dashboard: React.FC = () => {
       <Form hasError={!!inputError} onSubmit={handleAddRepository}>
         <input
           value={newRepo}
+          autoCorrect="false"
+          autoCapitalize="none"
           onChange={(e) => setNewRepo(e.target.value)}
           placeholder="digite o nome do repositório"
         />
