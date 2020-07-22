@@ -6,11 +6,11 @@ interface FormProps {
 }
 
 export const Title = styled.h1`
-  color: #3a3a3a;
   font-size: 48px;
   max-width: 450px;
-  line-height: 56px;
   margin-top: 80px;
+  line-height: 56px;
+  color: ${(props) => props.theme.colors.title};
 `;
 
 export const Form = styled.form<FormProps>`
@@ -25,7 +25,7 @@ export const Form = styled.form<FormProps>`
     height: 70px;
     color: #3a3a3a;
     padding: 0 24px;
-    border: 2px solid #fff;
+    border: 2px solid ${(props) => props.theme.colors.cardBackground};
     border-right: 0;
     border-radius: 5px 0px 0px 5px;
 
@@ -40,7 +40,7 @@ export const Form = styled.form<FormProps>`
     }
 
     &::placeholder {
-      color: #a8a8b3;
+      color: ${(props) => props.theme.colors.description};
       @media (max-width: 480px) {
         font-size: 80%;
       }
@@ -82,7 +82,7 @@ export const Repositories = styled.div`
     width: 100%;
     padding: 24px;
     display: block;
-    background: #fff;
+    background: ${(props) => props.theme.colors.cardBackground};
     border-radius: 5px;
     text-decoration: none;
     transition: transform 0.2s;
@@ -116,11 +116,11 @@ export const Repositories = styled.div`
 
       strong {
         font-size: 20px;
-        color: #3d3d4d;
+        color: ${(props) => props.theme.colors.cardTitle};
       }
 
       p {
-        color: #a8a8b3;
+        color: ${(props) => props.theme.colors.description};
         margin-top: 4px;
         font-size: 18px;
 
@@ -132,7 +132,7 @@ export const Repositories = styled.div`
 
     svg {
       margin-left: auto;
-      color: #cbcbd6;
+      color: ${(props) => props.theme.colors.icon};
 
       @media (max-width: 480px) {
         width: 20px;

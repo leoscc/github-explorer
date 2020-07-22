@@ -1,5 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
+import {
+  FiStar,
+  FiGitBranch,
+  FiAlertCircle,
+  FiChevronLeft,
+  FiChevronRight,
+} from 'react-icons/fi';
 import { Link, useRouteMatch } from 'react-router-dom';
 import api from '../../services/api';
 
@@ -51,7 +57,6 @@ const Repository: React.FC = () => {
   return (
     <>
       <Header>
-        <img src={logoImg} alt="GitHub Explorer" />
         <Link to="/">
           <FiChevronLeft size={16} />
           Voltar
@@ -73,17 +78,26 @@ const Repository: React.FC = () => {
 
           <ul>
             <li>
-              <strong>{repository.stargazers_count}</strong>
+              <strong>
+                <FiStar size={28} />
+                {repository.stargazers_count}
+              </strong>
               <span>Stars</span>
             </li>
 
             <li>
-              <strong>{repository.forks_count}</strong>
+              <strong>
+                <FiGitBranch size={28} />
+                {repository.forks_count}
+              </strong>
               <span>Forks</span>
             </li>
 
             <li>
-              <strong>{repository.open_issues_count}</strong>
+              <strong>
+                <FiAlertCircle size={28} />
+                {repository.open_issues_count}
+              </strong>
               <span>Issues abertas</span>
             </li>
           </ul>

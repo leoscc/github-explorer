@@ -48,7 +48,11 @@ const Dashboard: React.FC = () => {
       }
 
       // check if repository already exists
-      if (repositories.find((repository) => repository.full_name === newRepo)) {
+      if (
+        repositories.find(
+          (repository) => repository.full_name === newRepo.toLowerCase(),
+        )
+      ) {
         setNewRepo('');
         setInputError('Ops, você já adicionou este repositório');
         return;
@@ -63,7 +67,8 @@ const Dashboard: React.FC = () => {
         setNewRepo('');
         setInputError('');
       } catch (error) {
-        setInputError('Erro na busca por este repositório');
+        setNewRepo('');
+        setInputError('Desculpe, não encontramos este repositório');
       }
     },
     [newRepo, repositories],
@@ -71,7 +76,6 @@ const Dashboard: React.FC = () => {
 
   return (
     <>
-      <img src={logoImg} alt="Github Explorer" />
       <Title>Explore repositórios no GitHub</Title>
 
       <Form hasError={!!inputError} onSubmit={handleAddRepository}>
