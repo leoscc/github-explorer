@@ -1,11 +1,12 @@
 import styled, { css } from 'styled-components';
+import { motion } from 'framer-motion';
 import { shade } from 'polished';
 
 interface FormProps {
   hasError: boolean;
 }
 
-export const Title = styled.h1`
+export const Title = styled(motion.h1)`
   font-size: 48px;
   max-width: 450px;
   margin-top: 80px;
@@ -13,7 +14,7 @@ export const Title = styled.h1`
   color: ${(props) => props.theme.colors.title};
 `;
 
-export const Form = styled.form<FormProps>`
+export const Form = styled(motion.form)<FormProps>`
   margin-top: 40px;
   max-width: 700px;
 
@@ -25,7 +26,7 @@ export const Form = styled.form<FormProps>`
     height: 70px;
     color: #3a3a3a;
     padding: 0 24px;
-    border: 2px solid ${(props) => props.theme.colors.cardBackground};
+    border: 2px solid #fff;
     border-right: 0;
     border-radius: 5px 0px 0px 5px;
 
@@ -74,9 +75,13 @@ export const Error = styled.span`
   margin-top: 8px;
 `;
 
-export const Repositories = styled.div`
+export const Repositories = styled(motion.div)`
   margin-top: 80px;
   max-width: 700px;
+
+  > div {
+    margin-bottom: 8px;
+  }
 
   a {
     width: 100%;
