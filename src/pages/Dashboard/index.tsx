@@ -1,5 +1,6 @@
 import React, { useState, useEffect, FormEvent, useCallback } from 'react';
 import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
 import { FiChevronRight } from 'react-icons/fi';
 
 import api from '../../services/api';
@@ -74,7 +75,9 @@ const Dashboard: React.FC = () => {
   );
 
   return (
-    <>
+    <motion.div
+      exit={{ opacity: 0, transition: { duration: 0.6, ease: 'easeOut' } }}
+    >
       <Title>Explore repositórios no GitHub</Title>
 
       <Form hasError={!!inputError} onSubmit={handleAddRepository}>
@@ -109,7 +112,7 @@ const Dashboard: React.FC = () => {
           </Link>
         ))}
       </Repositories>
-    </>
+    </motion.div>
   );
 };
 

@@ -6,7 +6,9 @@ import {
   FiChevronLeft,
   FiChevronRight,
 } from 'react-icons/fi';
+import { motion } from 'framer-motion';
 import { Link, useRouteMatch } from 'react-router-dom';
+
 import api from '../../services/api';
 
 import { Header, RepositoryInfo, Issues } from './styles';
@@ -53,7 +55,9 @@ const Repository: React.FC = () => {
   }, [params.repository]);
 
   return (
-    <>
+    <motion.div
+      exit={{ opacity: 0, transition: { duration: 0.6, ease: 'easeOut' } }}
+    >
       <Header>
         <Link to="/">
           <FiChevronLeft size={16} />
@@ -119,7 +123,7 @@ const Repository: React.FC = () => {
           </a>
         ))}
       </Issues>
-    </>
+    </motion.div>
   );
 };
 
