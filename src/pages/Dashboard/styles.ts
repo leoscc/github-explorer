@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import styled, { css, keyframes } from 'styled-components';
 import { motion } from 'framer-motion';
 import { shade } from 'polished';
 
@@ -7,11 +7,29 @@ interface FormProps {
 }
 
 export const Title = styled(motion.h1)`
-  font-size: 48px;
   max-width: 450px;
   margin-top: 80px;
-  line-height: 56px;
+  line-height: 120%;
+  font-size: min(max(1rem, 10.3vw), 48px);
   color: ${(props) => props.theme.colors.title};
+`;
+
+const shakeAnimation = keyframes`
+10%, 90% {
+  transform: translate3d(-1px, 0, 0);
+}
+
+20%, 80% {
+  transform: translate3d(2px, 0, 0);
+}
+
+30%, 50%, 70% {
+  transform: translate3d(-4px, 0, 0);
+}
+
+40%, 60% {
+  transform: translate3d(4px, 0, 0);
+}
 `;
 
 export const Form = styled(motion.form)<FormProps>`
@@ -19,39 +37,65 @@ export const Form = styled(motion.form)<FormProps>`
   max-width: 700px;
 
   display: flex;
+  align-items: flex-end;
 
-  input {
-    flex: 1;
-    border: 0;
-    height: 70px;
-    color: #3a3a3a;
-    padding: 0 24px;
-    border: 2px solid #fff;
-    border-right: 0;
-    border-radius: 5px 0px 0px 5px;
+  @media (max-width: 480px) {
+    flex-direction: column;
+  }
 
-    ${(props) =>
-      props.hasError &&
-      css`
-        border-color: #c53030;
-      `}
+  label {
+    display: flex;
+    flex: 2;
+    flex-direction: column;
 
-    @media (max-width: 480px) {
-      font-size: 90%;
+    width: 100%;
+
+    strong {
+      opacity: 0.6;
+      font-size: 2px;
+      margin-bottom: 8px;
+      font-size: min(max(1rem, 3vw), 20px);
+      color: ${(props) => props.theme.colors.subtitle};
     }
 
-    &::placeholder {
-      color: ${(props) => props.theme.colors.description};
+    input {
+      border: 0;
+      width: 100%;
+      height: 70px;
+      color: #3a3a3a;
+      padding: 0 24px;
+      border: 2px solid #fff;
+
+      border-radius: 5px 0px 0px 5px;
+
+      ${(props) =>
+        props.hasError &&
+        css`
+          border-color: #c53030;
+          animation: ${shakeAnimation} 0.4s linear;
+        `}
+
+      &::placeholder {
+        color: ${(props) => props.theme.colors.description};
+        @media (max-width: 480px) {
+          font-size: 80%;
+        }
+      }
+
       @media (max-width: 480px) {
-        font-size: 80%;
+        flex: none;
+        margin-bottom: 4px;
+        border-top-right-radius: 5px;
+        border-bottom-right-radius: 5px;
       }
     }
   }
 
   button {
+    flex: 1;
     border: 0;
     color: #fff;
-    width: 210px;
+    width: 100%;
     height: 70px;
     font-weight: bold;
     background-color: #04d361;
@@ -59,8 +103,11 @@ export const Form = styled(motion.form)<FormProps>`
     transition: background-color 0.2s;
 
     @media (max-width: 480px) {
+      flex: none;
       padding: 5px;
       font-size: 90%;
+      border-top-left-radius: 5px;
+      border-bottom-left-radius: 5px;
     }
 
     &:hover {
@@ -95,6 +142,12 @@ export const Repositories = styled(motion.div)`
     display: flex;
     align-items: center;
 
+    @media (max-width: 480px) {
+      padding: 12px;
+      text-align: center;
+      flex-direction: column;
+    }
+
     &:hover {
       transform: translateX(10px);
     }
@@ -111,7 +164,8 @@ export const Repositories = styled(motion.div)`
       @media (max-width: 480px) {
         width: 48px;
         height: 48px;
-        align-self: flex-start;
+        align-self: center;
+        margin: 8px 0;
       }
     }
 

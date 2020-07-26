@@ -70,7 +70,7 @@ const Dashboard: React.FC = () => {
           `repos/${newRepo}`,
         );
 
-        setRepositories([...repositories, repository]);
+        setRepositories([...repositories, repository].reverse());
         setNewRepo('');
         setInputError('');
       } catch (error) {
@@ -100,13 +100,18 @@ const Dashboard: React.FC = () => {
         animate="show"
         exit="out"
       >
-        <input
-          value={newRepo}
-          autoCorrect="false"
-          autoCapitalize="none"
-          onChange={(e) => setNewRepo(e.target.value)}
-          placeholder="digite o nome do repositório"
-        />
+        <label htmlFor="repository">
+          <strong>Digite o autor/nome do repositório</strong>
+          <input
+            name="repository"
+            value={newRepo}
+            autoCorrect="false"
+            autoCapitalize="none"
+            onChange={(e) => setNewRepo(e.target.value)}
+            placeholder="ex: facebook/react"
+          />
+        </label>
+
         <button type="submit">Pesquisar</button>
       </Form>
 
