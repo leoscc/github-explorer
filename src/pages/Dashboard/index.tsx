@@ -5,6 +5,13 @@ import { FiChevronRight } from 'react-icons/fi';
 
 import api from '../../services/api';
 
+import {
+  titleAnimation,
+  formAnimation,
+  listAnimation,
+  listItemAnimation,
+} from '../../animations';
+
 import { Title, Form, Repositories, Error } from './styles';
 
 interface Repository {
@@ -75,12 +82,24 @@ const Dashboard: React.FC = () => {
   );
 
   return (
-    <motion.div
-      exit={{ opacity: 0, transition: { duration: 0.6, ease: 'easeOut' } }}
-    >
-      <Title>Explore repositórios no GitHub</Title>
+    <>
+      <Title
+        variants={titleAnimation}
+        initial="hidden"
+        animate="show"
+        exit="out"
+      >
+        Explore repositórios no GitHub
+      </Title>
 
-      <Form hasError={!!inputError} onSubmit={handleAddRepository}>
+      <Form
+        hasError={!!inputError}
+        onSubmit={handleAddRepository}
+        variants={formAnimation}
+        initial="hidden"
+        animate="show"
+        exit="out"
+      >
         <input
           value={newRepo}
           autoCorrect="false"
@@ -93,26 +112,33 @@ const Dashboard: React.FC = () => {
 
       {inputError && <Error>{inputError}</Error>}
 
-      <Repositories>
+      <Repositories
+        variants={listAnimation}
+        initial="hidden"
+        animate="show"
+        exit="out"
+      >
         {repositories.map((repository) => (
-          <Link
-            key={repository.full_name}
-            to={`/repository/${repository.full_name}`}
-          >
-            <img
-              src={repository.owner.avatar_url}
-              alt={repository.owner.login}
-            />
-            <div>
-              <strong>{repository.owner.login}</strong>
-              <p>{repository.description}</p>
-            </div>
+          <motion.div variants={listItemAnimation}>
+            <Link
+              key={repository.full_name}
+              to={`/repository/${repository.full_name}`}
+            >
+              <img
+                src={repository.owner.avatar_url}
+                alt={repository.owner.login}
+              />
+              <div>
+                <strong>{repository.owner.login}</strong>
+                <p>{repository.description}</p>
+              </div>
 
-            <FiChevronRight size={40} />
-          </Link>
+              <FiChevronRight size={40} />
+            </Link>
+          </motion.div>
         ))}
       </Repositories>
-    </motion.div>
+    </>
   );
 };
 

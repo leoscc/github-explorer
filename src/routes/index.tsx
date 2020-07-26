@@ -9,7 +9,7 @@ const Routes: React.FC = () => {
   const location = useLocation();
 
   return (
-    <AnimatePresence exitBeforeEnter>
+    <AnimatePresence exitBeforeEnter initial={false}>
       <Switch location={location} key={location.pathname}>
         <Route path="/" exact component={Dashboard} />
         <Route path="/repository/:repository+" component={Repository} />

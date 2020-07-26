@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { motion } from 'framer-motion';
 
 export const Header = styled.header`
   margin-top: 16px;
@@ -125,8 +126,12 @@ export const RepositoryInfo = styled.section`
   }
 `;
 
-export const Issues = styled.div`
+export const Issues = styled(motion.div)`
   margin-top: 80px;
+
+  > div {
+    margin-bottom: 8px;
+  }
 
   a {
     width: 100%;

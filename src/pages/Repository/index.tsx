@@ -9,6 +9,13 @@ import {
 import { motion } from 'framer-motion';
 import { Link, useRouteMatch } from 'react-router-dom';
 
+import {
+  listAnimation,
+  listItemAnimation,
+  imageAnimation,
+  infoAnimation,
+} from '../../animations';
+
 import api from '../../services/api';
 
 import { Header, RepositoryInfo, Issues } from './styles';
@@ -55,9 +62,7 @@ const Repository: React.FC = () => {
   }, [params.repository]);
 
   return (
-    <motion.div
-      exit={{ opacity: 0, transition: { duration: 0.6, ease: 'easeOut' } }}
-    >
+    <>
       <Header>
         <Link to="/">
           <FiChevronLeft size={16} />
@@ -68,45 +73,64 @@ const Repository: React.FC = () => {
       {repository && (
         <RepositoryInfo>
           <header>
-            <img
+            <motion.img
               src={repository.owner.avatar_url}
               alt={repository.owner.login}
+              variants={imageAnimation}
+              initial="hidden"
+              animate="show"
+              exit="out"
             />
-            <div>
+            <motion.div
+              variants={infoAnimation}
+              initial="hidden"
+              animate="show"
+              exit="out"
+            >
               <strong>{repository.full_name}</strong>
               <p>{repository.description}</p>
-            </div>
+            </motion.div>
           </header>
 
-          <ul>
-            <li>
+          <motion.ul
+            variants={listAnimation}
+            initial="hidden"
+            animate="show"
+            exit="out"
+          >
+            <motion.li variants={listItemAnimation}>
               <strong>
                 <FiStar size={28} />
                 {repository.stargazers_count}
               </strong>
               <span>Stars</span>
-            </li>
+            </motion.li>
 
-            <li>
+            <motion.li variants={listItemAnimation}>
               <strong>
                 <FiGitBranch size={28} />
                 {repository.forks_count}
               </strong>
               <span>Forks</span>
-            </li>
+            </motion.li>
 
-            <li>
+            <motion.li variants={listItemAnimation}>
               <strong>
                 <FiAlertCircle size={28} />
                 {repository.open_issues_count}
               </strong>
               <span>Issues abertas</span>
-            </li>
-          </ul>
+            </motion.li>
+          </motion.ul>
         </RepositoryInfo>
       )}
 
-      <Issues>
+      <Issues
+        variants={listAnimation}
+        initial="hidden"
+        animate="show"
+        exit="out"
+      >
         {issues.map((issue) => (
           <a
             key={issue.id}
@@ -123,7 +147,7 @@ const Repository: React.FC = () => {
           </a>
         ))}
       </Issues>
-    </motion.div>
+    </>
   );
 };
 
