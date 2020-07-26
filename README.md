@@ -17,7 +17,7 @@
 ---
 
 <a align="center">
-<img src="./docs/githubExplorer.png" alt="GitHub Explorer Demo">
+<img src="./docs/ghexplorer.svg" alt="GitHub Explorer Demo">
 </a>
 
 ## 📝 Table of Contents
@@ -58,7 +58,7 @@ What things you need to install the software and how to install them.
 
 ### Installing
 
-#### development mode ( running on your local machine )
+#### development mode ( running locally )
 
 ```shell
 # open your terminal/cmd and clone this repository
@@ -94,6 +94,7 @@ npm run start
 It is very simple to use this application:
 
 1. just type inside the input: `owner/repository` that you want to add to your list. Example:
+
 ```shell
 
  facebook/react
@@ -107,9 +108,10 @@ It is very simple to use this application:
 ## 🚀 Try online demo <a name = "deployment"></a>
 
 Please test the application running here: <br>
-[ONLINE DEMO](https://leon-carvalho.github.io/github-explorer/#/)
 
-> It is hosted with GitHub Pages
+<a href="https://leon-carvalho.github.io/github-explorer/#/">
+  <img src="https://img.shields.io/badge/demo-try%20online-blue?style=for-the-badge" />
+</a>
 
 ## ⛏️ Built Using <a name = "built_using"></a>
 
