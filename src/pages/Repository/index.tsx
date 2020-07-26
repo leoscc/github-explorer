@@ -9,8 +9,6 @@ import {
 import { Link, useRouteMatch } from 'react-router-dom';
 import api from '../../services/api';
 
-import logoImg from '../../assets/logo.svg';
-
 import { Header, RepositoryInfo, Issues } from './styles';
 
 interface RepositoryParams {
