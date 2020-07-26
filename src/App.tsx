@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter } from 'react-router-dom';
+import { HashRouter } from 'react-router-dom';
 import { ThemeProvider, DefaultTheme } from 'styled-components';
 
 import Header from './components/Header';
@@ -20,11 +20,11 @@ const App: React.FC = () => {
 
   return (
     <ThemeProvider theme={theme}>
-      <BrowserRouter>
+      <HashRouter>
         <Header toggleTheme={toggleTheme} />
         <Routes />
         <GlobalStyles />
-      </BrowserRouter>
+      </HashRouter>
     </ThemeProvider>
   );
 };
