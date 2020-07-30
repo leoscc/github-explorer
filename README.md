@@ -38,6 +38,12 @@ It was built as an exercise of Rocketseat's GoStack Bootcamp to put in practice 
 
 This project connects to GitHub official API to get the data.
 
+## 🚀 Online demo <a name = "deployment"></a>
+
+<a href="https://leon-carvalho.github.io/github-explorer/#/">
+  <img src="https://img.shields.io/badge/demo-try%20online-blue?style=for-the-badge" />
+</a>
+
 ## 🏁 Getting Started <a name = "getting_started"></a>
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
@@ -104,14 +110,6 @@ It is very simple to use this application:
 ```
 
 2. Now just click on the repository that you added to see details
-
-## 🚀 Try online demo <a name = "deployment"></a>
-
-Please test the application running here: <br>
-
-<a href="https://leon-carvalho.github.io/github-explorer/#/">
-  <img src="https://img.shields.io/badge/demo-try%20online-blue?style=for-the-badge" />
-</a>
 
 ## ⛏️ Built Using <a name = "built_using"></a>
 
